@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaeno - Registro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loaded">
+    
+    <canvas id="liquid-canvas"></canvas>
+
+    <div id="main-content">
+        <div class="login-card">
+            <div class="login-form-side">
+
+                <h1>Registro de Usuario</h1>
+
+                <h2>Nombre de Usuario</h2>
+                <input type="text" placeholder="Escriba su nombre" id="nombre">
+
+                <h2>Correo electrónico</h2>
+                <input type="email" placeholder="Escriba el email" id="email">
+
+                <h2>Contraseña</h2>
+                <input type="password" placeholder="Escriba la contraseña" id="clave">
+
+                <input type="button" id="btn-guardar" value="Registrarse">
+
+                <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
+
+            </div>
+            
+            <div class="interactive-canvas-side">
+                <div class="transparency"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de tus efectos visuales -->
+    <script src="js/script.js"></script>
+
+    <!-- Script de conexión con la API -->
+    <script>
+        document.getElementById('btn-guardar').addEventListener('click', async () => {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const clave = document.getElementById('clave').value.trim();
+
+            if (!nombre || !email || !clave) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            try {
+                const respuesta = await fetch('/api/registro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, email, clave })
+                });
+
+                const resultado = await respuesta.json();
+
+                if (respuesta.ok) {
+                    alert('¡Usuario guardado con éxito en MongoDB!');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error: ' + resultado.error);
+                }
+            } catch (error) {
+                console.error('Error al conectar con la API:', error);
+                alert('No se pudo conectar con el servidor.');
+            }
+        });
+    </script>
+</body>
+</html>

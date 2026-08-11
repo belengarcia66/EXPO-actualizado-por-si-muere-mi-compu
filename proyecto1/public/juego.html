@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaeno</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loaded">
+    
+    <!-- Canvas para el Shader de Fondo -->
+    <canvas id="liquid-canvas"></canvas>
+
+    <div id="main-content">
+        <div class="login-card">
+
+            <!-- Lado izquierdo: Imagen / Canvas interactivo -->
+            <div class="interactive-canvas-side">
+                <div class="transparency"></div>
+            </div>
+        
+            <!-- Lado derecho: Información del Usuario y el Juego -->
+            <div class="login-form-side">
+                <h1 id="titulo-bienvenida">Cargando...</h1>
+
+                <h2>Estado de Cuenta</h2>
+                <p id="info-usuario" style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">
+                    Verificando credenciales...
+                </p>
+
+                <h2>Partidas Guardadas</h2>
+                <div id="slots-container" style="margin-bottom: 20px;">
+                    <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.6);">
+                        No hay partidas guardadas en la nube.
+                    </p>
+                </div>
+
+                <input type="button" id="btn-logout" value="Cerrar Sesión">
+
+                <a href="index.html"> Volver al inicio</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script de tus efectos visuales (shader, etc.) -->
+    <script src="js/script.js"></script>
+    
+    <!-- Script de validación de usuario y sesión -->
+    <script>
+        async function cargarPerfil() {
+            const token = localStorage.getItem('token');
+
+            // Si no hay token guardado, redirigir al login
+            if (!token) {
+                alert('Debes iniciar sesión para acceder al juego.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                // Consultamos a la API con el Token JWT
+                const respuesta = await fetch('/api/usuario-logueado', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+
+                if (respuesta.ok) {
+                    const usuario = await respuesta.json();
+                    
+                    // Actualizamos la interfaz con el nombre e información
+                    document.getElementById('titulo-bienvenida').innerText = `¡Hola, ${usuario.nombre}!`;
+                    document.getElementById('info-usuario').innerText = `Email: ${usuario.email}`;
+                } else {
+                    // Si el token no es válido o expiró
+                    localStorage.removeItem('token');
+                    alert('Sesión expirada. Por favor inicia sesión de nuevo.');
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Error al verificar sesión:', error);
+                document.getElementById('info-usuario').innerText = 'Error al conectar con el servidor.';
+            }
+        }
+
+        // Botón para cerrar sesión
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            localStorage.removeItem('token');
+            alert('Has cerrado sesión correctamente.');
+            window.location.href = 'login.html';
+        });
+
+        // Ejecutar al cargar la pantalla
+        cargarPerfil();
+    </script>
+</body>
+</html>

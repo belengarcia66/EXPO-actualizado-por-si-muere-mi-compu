@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaeno - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loaded">
+    
+    <canvas id="liquid-canvas"></canvas>
+
+    <div id="main-content">
+        <div class="login-card">
+
+            <div class="interactive-canvas-side">
+                <div class="transparency"></div>
+            </div>
+        
+            <div class="login-form-side">
+                <h1>Inicia sesión</h1>
+
+                <h2>Correo electrónico</h2>
+                <input type="email" placeholder="Escriba el email" id="email">
+
+                <h2>Contraseña</h2>
+                <input type="password" placeholder="Escriba la contraseña" id="clave">
+
+                <input type="button" id="btn-guardar" value="Ingresar">
+
+                <a href="registro.html">¿Aún no tienes cuenta? Registrate</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script de tus efectos visuales -->
+    <script src="js/script.js"></script>
+    
+    <!-- Lógica de autenticación con Express y MongoDB -->
+    <script>
+        document.getElementById('btn-guardar').addEventListener('click', async () => {
+            const email = document.getElementById('email').value.trim();
+            const clave = document.getElementById('clave').value.trim();
+
+            if (!email || !clave) {
+                alert('Por favor completa ambos campos.');
+                return;
+            }
+
+            try {
+                const respuesta = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, clave })
+                });
+
+                const resultado = await respuesta.json();
+
+                if (respuesta.ok) {
+                    // Guarda el Token JWT en el navegador
+                    localStorage.setItem('token', resultado.token);
+                    
+                    alert('¡Inicio de sesión exitoso!');
+                    // Redirige al juego jeje
+                    window.location.href = 'juego.html'; 
+                } else {
+                    alert('Error: ' + resultado.error);
+                }
+            } catch (error) {
+                console.error('Error al conectar:', error);
+                alert('No se pudo conectar con el servidor.');
+            }
+        });
+    </script>
+</body>
+</html>
