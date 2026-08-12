@@ -1,0 +1,97 @@
+{
+  "grids": [
+    {
+      "Slots": [
+        {
+          "Name": "Skill1",
+          "BackgroundImage": "",
+          "Button": "1",
+          "TextOffsetY": "0",
+          "SpecialBehavior": "skill_only"
+        },
+        {
+          "Name": "Skill2",
+          "BackgroundImage": "",
+          "Button": "2",
+          "TextOffsetY": "0",
+          "SpecialBehavior": "skill_only"
+        },
+        {
+          "Name": "Skill3",
+          "BackgroundImage": "",
+          "Button": "3",
+          "TextOffsetY": "0",
+          "SpecialBehavior": "skill_only"
+        }
+      ],
+      "ControllableViaGamepad": "true",
+      "BackgroundImage": "",
+      "RowColumn": "1, 3",
+      "Padding": "1"
+    },
+    {
+      "Slots": [
+        {
+          "Name": "Weapon",
+          "BackgroundImage": "",
+          "Button": "RightClick",
+          "TextOffsetY": "0",
+          "SpecialBehavior": "display_weapon"
+        }
+      ],
+      "ControllableViaGamepad": "true",
+      "BackgroundImage": "",
+      "RowColumn": "2, 5",
+      "Padding": "10"
+    },
+    {
+      "Slots": [
+        {
+          "Name": "Item",
+          "BackgroundImage": "",
+          "Button": "Shift",
+          "TextOffsetY": "0",
+          "SpecialBehavior": "item_only"
+        }
+      ],
+      "ControllableViaGamepad": "true",
+      "BackgroundImage": "",
+      "RowColumn": "2, 5",
+      "Padding": "10"
+    }
+  ],
+  "positions": {
+    "Skill1": {
+      "x": 351,
+      "y": 582
+    },
+    "Skill2": {
+      "x": 416,
+      "y": 582
+    },
+    "Skill3": {
+      "x": 481,
+      "y": 582
+    },
+    "Weapon": {
+      "x": 42,
+      "y": 500
+    },
+    "Item": {
+      "x": 122,
+      "y": 500
+    },
+    "grid_Skill1": {
+      "x": 416,
+      "y": 582
+    },
+    "grid_Weapon": {
+      "x": 190,
+      "y": 537
+    },
+    "grid_Item": {
+      "x": 270,
+      "y": 537
+    }
+  }
+}
