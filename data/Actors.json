@@ -1,0 +1,12 @@
+[
+null,
+{"id":1,"battlerName":"SF_Actor1_5","characterIndex":4,"characterName":"Hero/$Rojo_Idle_f3","classId":1,"equips":[2,0,0,3,0],"faceIndex":4,"faceName":"SF_Actor1","traits":[],"initialLevel":1,"maxLevel":99,"name":"Twis","nickname":"","note":"","profile":""},
+{"id":2,"battlerName":"Actor2_4","characterIndex":3,"characterName":"Actor2","classId":7,"equips":[1,0,0,9,0],"faceIndex":3,"faceName":"Actor2","traits":[],"initialLevel":1,"maxLevel":99,"name":"Zǐténg","nickname":"","note":"","profile":""},
+{"id":3,"battlerName":"Actor1_7","characterIndex":0,"characterName":"PERSONAJE","classId":3,"equips":[31,0,65,5,0],"faceIndex":6,"faceName":"Actor1","traits":[],"initialLevel":1,"maxLevel":99,"name":"Ale","nickname":"","note":"","profile":""},
+{"id":4,"battlerName":"SF_Actor2_2","characterIndex":1,"characterName":"SF_Actor2","classId":2,"equips":[0,0,0,0,0],"faceIndex":1,"faceName":"SF_Actor2","traits":[],"initialLevel":1,"maxLevel":99,"name":"Chiara","nickname":"","note":"","profile":""},
+{"id":5,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""},
+{"id":6,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""},
+{"id":7,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""},
+{"id":8,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""},
+{"id":9,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""}
+]
